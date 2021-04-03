@@ -1,5 +1,5 @@
 /*
-    Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2020-2021. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -13,15 +13,14 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-
 export declare function isEnvReady(): Promise<IsEnvReadyResult>;
 export declare function isSandboxActivated(): Promise<IsSandboxActivatedResult>;
-export declare function obtainOwnedPurchases(priceType: OwnedPurchasesReq): Promise<OwnedPurchasesResult>;
-export declare function obtainProductInfo(product: ProductInfoReq): Promise<ProductInfoResult>;
-export declare function createPurchaseIntent(purchaseIntent: PurchaseIntentReq): Promise<PurchaseIntentResult>;
-export declare function consumeOwnedPurchase(ownedPurchase: ConsumeOwnedPurchaseReq): Promise<ConsumeOwnedPurchaseResult>;
-export declare function obtainOwnedPurchaseRecord(ownedPurchaseRecord: OwnedPurchasesReq): Promise<OwnedPurchasesResult>;
-export declare function startIapActivity(productId?: string): Promise<void>;
+export declare function obtainOwnedPurchases(ownedPurchasesRequest: OwnedPurchasesReq): Promise<OwnedPurchasesResult>;
+export declare function obtainProductInfo(productInfoRequest: ProductInfoReq): Promise<ProductInfoResult>;
+export declare function createPurchaseIntent(purchaseIntentRequest: PurchaseIntentReq): Promise<PurchaseIntentResult>;
+export declare function consumeOwnedPurchase(consumeOwnedPurchaseRequest: ConsumeOwnedPurchaseReq): Promise<ConsumeOwnedPurchaseResult>;
+export declare function obtainOwnedPurchaseRecord(ownedPurchasesRequest: OwnedPurchasesReq): Promise<OwnedPurchasesResult>;
+export declare function startIapActivity(startIapActivityRequest: StartIapActivityReq): Promise<void>;
 export declare function enableLogger(): Promise<void>;
 export declare function disableLogger(): Promise<void>;
 /**
@@ -72,10 +71,10 @@ export interface ProductInfoReq {
 export interface ProductInfoResult {
     returnCode: number;
     errMsg: string;
-    productInfoList: ProductInfoList[];
+    productInfoList: ProductInfo[];
     status: Status;
 }
-export interface ProductInfoList {
+export interface ProductInfo {
     productId: string;
     priceType: number;
     price: string;
@@ -111,4 +110,7 @@ export interface ConsumeOwnedPurchaseResult {
     errMsg: string;
     returnCode: number;
     status: Status;
+}
+export interface StartIapActivityReq {
+    productId?: string;
 }
